@@ -1,10 +1,13 @@
 import "./App.css";
+import { TitleBar } from "./components/TitleBar/TitleBar";
 
 function App() {
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold">hello</h1>
+    <div className="bg-transparent">
+      <div className="bg-white rounded-md overflow-hidden h-screen w-screen">
+        <TitleBar />
+      </div>
     </div>
   );
 }
