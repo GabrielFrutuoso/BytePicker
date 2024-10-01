@@ -7,6 +7,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import { TabsTrigger } from "@radix-ui/react-tabs";
 
 export const RequestForm = () => {
   return (
@@ -24,11 +26,22 @@ export const RequestForm = () => {
             <SelectItem value="PATCH">PATCH</SelectItem>
           </SelectContent>
         </Select>
-        <Input placeholder="Ex: https://localhost:3000" className="rounded-none border-y-border" />
+        <Input
+          placeholder="Ex: https://localhost:3000"
+          className="rounded-none border-y-border"
+        />
         <Button variant={"default"} className="rounded-none">
           Send
         </Button>
       </div>
+      <Tabs defaultValue="body">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="body">body</TabsTrigger>
+          <TabsTrigger value="auth">auth</TabsTrigger>
+        </TabsList>
+        <TabsContent value="body">body</TabsContent>
+        <TabsContent value="auth">auth</TabsContent>
+      </Tabs>
     </div>
   );
 };
