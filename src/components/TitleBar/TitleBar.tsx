@@ -1,13 +1,13 @@
-import { appWindow } from '@tauri-apps/api/window';
-import { MdMinimize, MdFullscreen, MdClose } from 'react-icons/md';
-import { Button } from '../ui/button';
+import { appWindow } from "@tauri-apps/api/window";
+import { MdMinimize, MdFullscreen, MdClose } from "react-icons/md";
+import { Button } from "../ui/button";
 
 export const TitleBar = () => {
   const handleClose = () => {
     try {
       appWindow.close();
     } catch (error) {
-      console.error('Failed to close window:', error);
+      console.error("Failed to close window:", error);
     }
   };
 
@@ -15,13 +15,13 @@ export const TitleBar = () => {
     try {
       appWindow.minimize();
     } catch (error) {
-      console.error('Failed to minimize window:', error);
+      console.error("Failed to minimize window:", error);
     }
   };
 
   const handleToggleMaximize = () => {
     try {
-      appWindow.isMaximized().then(isMaximized => {
+      appWindow.isMaximized().then((isMaximized) => {
         if (isMaximized) {
           appWindow.unmaximize();
         } else {
@@ -29,24 +29,39 @@ export const TitleBar = () => {
         }
       });
     } catch (error) {
-      console.error('Failed to toggle maximize window:', error);
+      console.error("Failed to toggle maximize window:", error);
     }
   };
 
   return (
-    <div data-tauri-drag-region className="flex justify-between items-center bg-secondary">
-      <div className="text-md font-semibold ml-2">Bytepicker</div>
-      <div className="flex">
-        <Button variant={"ghost"} onClick={handleMinimize} className="focus:outline-none">
+    <div
+      data-tauri-drag-region
+      className="flex justify-between items-center bg-secondary"
+    >
+      <div className="text-md text-primary font-semibold ml-2">Bytepicker</div>
+      <div className="flex text-primary">
+        <Button
+          variant={"ghost"}
+          onClick={handleMinimize}
+          className="focus:outline-none"
+        >
           <MdMinimize size={18} />
         </Button>
-        <Button variant={"ghost"} onClick={handleToggleMaximize} className="focus:outline-none">
+        <Button
+          variant={"ghost"}
+          onClick={handleToggleMaximize}
+          className="focus:outline-none"
+        >
           <MdFullscreen size={18} />
         </Button>
-        <Button variant={"ghost"} onClick={handleClose} className="focus:outline-none hover:bg-destructive hover:text-background">
+        <Button
+          variant={"ghost"}
+          onClick={handleClose}
+          className="focus:outline-none hover:bg-destructive hover:text-primary"
+        >
           <MdClose size={18} />
         </Button>
       </div>
     </div>
-  )
-}
+  );
+};
