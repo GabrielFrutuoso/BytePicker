@@ -1,5 +1,6 @@
-import { X, Minimize2, PictureInPicture2 } from 'lucide-react'
-import { appWindow } from '@tauri-apps/api/window'
+import { appWindow } from '@tauri-apps/api/window';
+import { MdMinimize, MdFullscreen, MdClose } from 'react-icons/md';
+import { Button } from '../ui/button';
 
 export const TitleBar = () => {
   const handleClose = () => {
@@ -33,18 +34,18 @@ export const TitleBar = () => {
   };
 
   return (
-    <div data-tauri-drag-region className="flex justify-between items-center p-1 bg-secondary">
-      <div className="text-sm font-semibold">Bytepicker</div>
-      <div className="flex space-x-2">
-        <button onClick={handleMinimize} className="focus:outline-none">
-          <Minimize2 size={18} />
-        </button>
-        <button onClick={handleToggleMaximize} className="focus:outline-none">
-          <PictureInPicture2 size={18} />
-        </button>
-        <button onClick={handleClose} className="focus:outline-none">
-          <X size={18} />
-        </button>
+    <div data-tauri-drag-region className="flex justify-between items-center bg-secondary">
+      <div className="text-md font-semibold ml-2">Bytepicker</div>
+      <div className="flex">
+        <Button variant={"ghost"} onClick={handleMinimize} className="focus:outline-none">
+          <MdMinimize size={18} />
+        </Button>
+        <Button variant={"ghost"} onClick={handleToggleMaximize} className="focus:outline-none">
+          <MdFullscreen size={18} />
+        </Button>
+        <Button variant={"ghost"} onClick={handleClose} className="focus:outline-none hover:bg-destructive hover:text-background">
+          <MdClose size={18} />
+        </Button>
       </div>
     </div>
   )

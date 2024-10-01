@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div className="bg-transparent">
-      <div className="bg-white rounded-md overflow-hidden h-screen w-screen">
+      <div className="bg-background rounded-md overflow-hidden h-screen w-screen">
         <TitleBar />
       </div>
     </div>
