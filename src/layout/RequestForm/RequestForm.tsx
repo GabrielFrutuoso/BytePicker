@@ -8,9 +8,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import { TabsTrigger } from "@radix-ui/react-tabs";
+import { useState } from "react";
 
 export const RequestForm = () => {
+  const [currentTab, setCurrentTab] = useState("body");
   return (
     <div className="flex flex-col">
       <div className="flex m-1 rounded-md overflow-hidden">
@@ -35,12 +38,22 @@ export const RequestForm = () => {
         </Button>
       </div>
       <Tabs defaultValue="body">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="body">body</TabsTrigger>
-          <TabsTrigger value="auth">auth</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 p-0">
+          <TabsTrigger
+            className={`${currentTab === 'body' ? "bg-foreground text-secondary" : ""}`}
+            onClick={() => setCurrentTab("body")}
+            value="body"
+          >
+            body
+          </TabsTrigger>
+          <TabsTrigger className={`${currentTab === 'auth' ? "bg-foreground text-secondary" : ""}`} onClick={() => setCurrentTab("auth")} value="auth">
+            auth
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="body">body</TabsContent>
-        <TabsContent value="auth">auth</TabsContent>
+        <TabsContent className="p-1 h-[84vh]" value="body">
+          <Textarea className="resize-none h-full" placeholder="test" />
+        </TabsContent>
+        <TabsContent className="p-1 h-[85.2vh]" value="auth">auth</TabsContent>
       </Tabs>
     </div>
   );
