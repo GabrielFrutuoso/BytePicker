@@ -17,9 +17,9 @@ export const RequestForm = () => {
   return (
     <div className="flex flex-col">
       <div className="flex m-1 rounded-md overflow-hidden">
-        <Select>
+        <Select onValueChange={(e) => console.log(e)}>
           <SelectTrigger className="rounded-none w-24">
-            <SelectValue placeholder="method" />
+            <SelectValue placeholder="Method" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="GET">GET</SelectItem>
@@ -30,6 +30,7 @@ export const RequestForm = () => {
           </SelectContent>
         </Select>
         <Input
+          onChange={(e => console.log(e.target.value))}
           placeholder="Ex: https://localhost:3000"
           className="rounded-none border-y-border"
         />
@@ -51,7 +52,7 @@ export const RequestForm = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent className="p-1 h-[84vh]" value="body">
-          <Textarea className="resize-none h-full" placeholder="test" />
+          <Textarea onChange={(e) => console.log(e.target.value)} className="resize-none h-full" placeholder="test" />
         </TabsContent>
         <TabsContent className="p-1 h-[85.2vh]" value="auth">auth</TabsContent>
       </Tabs>
